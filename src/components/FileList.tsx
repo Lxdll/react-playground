@@ -1,24 +1,16 @@
 /**
  * @author: Lxdll
- * description
+ * FileList
  */
 
 import { useContext } from "react";
 import { Context } from "../PlaygroundContext";
 import { makeFilename } from "../utils";
-import { validateFileCanRemove } from "../files";
 import FileListItem from "./FileListItem";
 
-interface FileListProps {}
-
-export default function FileList(props: FileListProps) {
-  const {
-    files,
-    addFile,
-    removeFile,
-    setSelectedFileName,
-    setRenamingFilename,
-  } = useContext(Context);
+export default function FileList() {
+  const { files, addFile, setSelectedFileName, setRenamingFilename } =
+    useContext(Context);
 
   const filenameList = Object.keys(files);
 

@@ -12,7 +12,7 @@ interface MessageProps {
 }
 
 export default function Message(props: MessageProps) {
-  const { type, content } = props;
+  const { content } = props;
   const [visible, setVisible] = useState<boolean>(false);
 
   useEffect(() => {
