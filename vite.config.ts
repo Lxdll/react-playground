@@ -7,6 +7,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react(), svgr()],
   assetsInclude: ['src/template/**'],
+  base: './',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
