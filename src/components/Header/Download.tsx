@@ -2,9 +2,9 @@
  * @author: lxdll
  * 下载
  */
-import DownloadIcon from "@/assets/download.svg?react";
+import { DownloadIcon } from "@/icons";
 import { useContext } from "react";
-import { Context } from "../PlaygroundContext";
+import { Context } from "@/store/PlaygroundContext";
 
 export default function Download() {
   const { downloadFiles } = useContext(Context);

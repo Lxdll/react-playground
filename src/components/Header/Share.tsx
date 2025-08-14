@@ -2,7 +2,7 @@
  * @author: lxdll
  * 分享组件
  */
-import ShareIcon from "@/assets/share.svg?react";
+import { ShareIcon } from "@/icons";
 import copy from "copy-to-clipboard";
 
 export default function Share() {

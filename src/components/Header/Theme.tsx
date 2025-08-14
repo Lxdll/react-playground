@@ -2,8 +2,8 @@
  * @author: lxdll
  * 切换主题
  */
-import MoonIcon from "@/assets/moon.svg?react";
-import SunIcon from "@/assets/sun.svg?react";
+import { MoonIcon } from "@/icons";
+import { SunIcon } from "@/icons";
 import { useState } from "react";
 
 enum ThemeEnum {

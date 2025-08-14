@@ -6,7 +6,7 @@
 import { useContext } from "react";
 import Editor from "./Editor";
 import FileList from "./FileList";
-import { Context } from "../PlaygroundContext";
+import { Context } from "@/store/PlaygroundContext";
 
 export default function Aside() {
   const { files, selectedFileName, setFiles } = useContext(Context);

@@ -4,8 +4,8 @@
  */
 
 import { useContext } from "react";
-import { Context } from "../PlaygroundContext";
-import { makeFilename } from "../utils";
+import { Context } from "@/store/PlaygroundContext";
+import { makeFilename } from "@/utils";
 import FileListItem from "./FileListItem";
 
 export default function FileList() {
@@ -23,7 +23,7 @@ export default function FileList() {
   };
 
   return (
-    <div className="border-[0.5px] px-1 pt-2 flex mb-1 overflow-x-scroll custom-scrollbar-x">
+    <div className="px-1 pt-2 flex mb-1 overflow-x-scroll custom-scrollbar-x">
       {filenameList.map((filename, index) => (
         <FileListItem key={index} filename={filename} />
       ))}

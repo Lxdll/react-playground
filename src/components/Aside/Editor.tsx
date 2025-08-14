@@ -4,8 +4,8 @@
  */
 import MonacoEditor, { EditorProps, type OnMount } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
-import { createATA } from "../ata";
-import { File } from "../type";
+import { createATA } from "@/utils/ata";
+import { File } from "@/types";
 
 interface Props {
   file: File;

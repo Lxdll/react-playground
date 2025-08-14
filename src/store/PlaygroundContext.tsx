@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useEffect, useState } from "react";
-import { compress, filename2language, getInitFileFromUrl } from "./utils";
-import { initFiles } from "./files";
-import { Files, File } from "./type";
+import { compress, filename2language, getInitFileFromUrl } from "@/utils";
+import { initFiles } from "@/files";
+import { Files, File } from "@/types";
 import JSZip from "jszip";
 import { saveAs } from "file-saver";
 

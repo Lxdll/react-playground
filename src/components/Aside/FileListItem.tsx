@@ -4,8 +4,8 @@
  */
 
 import { useContext, useRef, useState } from "react";
-import { validateFileCanRemove } from "../files";
-import { Context } from "../PlaygroundContext";
+import { validateFileCanRemove } from "@/files";
+import { Context } from "@/store/PlaygroundContext";
 import cn from "classnames";
 
 interface FileListItemProps {

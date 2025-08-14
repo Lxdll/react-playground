@@ -4,11 +4,11 @@
  */
 
 import { useContext, useEffect, useRef, useState } from "react";
-import CompilerWorker from "../compiler.worker?worker";
-import { Context } from "../PlaygroundContext";
-import iframeRaw from "../iframe.html?raw";
-import { InitFileNameEnum } from "../files";
-import Message from "./Message";
+import CompilerWorker from "@/worker/compiler.worker?worker";
+import { Context } from "@/store/PlaygroundContext";
+import iframeRaw from "@/iframe.html?raw";
+import { InitFileNameEnum } from "@/files";
+import Message from "@/components/Message";
 
 export default function Preview() {
   const { files } = useContext(Context);

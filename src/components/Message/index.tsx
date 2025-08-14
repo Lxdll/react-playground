@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useState } from "react";
-import CloseIcon from "@/assets/close.svg?react";
+import { CloseIcon } from "@/icons";
 
 interface MessageProps {
   type: "error" | "warn";
