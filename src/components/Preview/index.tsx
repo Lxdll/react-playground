@@ -19,7 +19,7 @@ export default function Preview() {
     compiledCode,
   );
   const [errorMsg, setErrorMsg] = useState<string>("");
-  const compilerWorkerRef = useRef<Worker>();
+  const compilerWorkerRef = useRef<Worker>(null);
 
   function getIframeUrl() {
     const iframeHtmlStr = iframeRaw
