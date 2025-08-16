@@ -1,15 +1,15 @@
-import { Files } from "@/types";
-import { filename2language } from "@/utils";
-import App from "./template/App.tsx?raw";
-import AppCss from "./template/App.css?raw";
-import Main from "./template/main.tsx?raw";
-import ImportMap from "./template/import-map.json?raw";
+import { Files } from '@/types';
+import { filename2language } from '@/utils';
+import App from './template/App.tsx?raw';
+import AppCss from './template/App.css?raw';
+import Main from './template/main.tsx?raw';
+import ImportMap from './template/import-map.json?raw';
 
 export enum InitFileNameEnum {
-  APP_COMPONENT = "App.tsx",
-  APP_STYLE = "App.css",
-  ENTRY_FILE = "main.tsx",
-  IMPORT_MAP_FILE = "import-map.json",
+  APP_COMPONENT = 'App.tsx',
+  APP_STYLE = 'App.css',
+  ENTRY_FILE = 'main.tsx',
+  IMPORT_MAP_FILE = 'import-map.json',
 }
 
 // 初始化文件

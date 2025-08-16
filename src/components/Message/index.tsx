@@ -3,17 +3,16 @@
  * 错误提示
  */
 
-import { useEffect, useState } from "react";
-import { CloseIcon } from "@/icons";
+import { useEffect, useState } from 'react';
+import { CloseIcon } from '@/icons';
 
 interface MessageProps {
-  type: "error" | "warn";
   content: string;
 }
 
 export default function Message(props: MessageProps) {
   const { content } = props;
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(!!content);
 
   useEffect(() => {
     setVisible(!!content);
@@ -21,10 +20,10 @@ export default function Message(props: MessageProps) {
 
   if (visible) {
     return (
-      <div className="absolute bottom-3 left-1 right-1 border p-3 h-1/2 overflow-y-scroll bg-red-50 mx-1 pr-10">
+      <div className="absolute right-1 bottom-3 left-1 mx-1 h-1/2 overflow-y-scroll border bg-red-50 p-3 pr-10">
         <pre dangerouslySetInnerHTML={{ __html: content }}></pre>
         <CloseIcon
-          className="absolute right-3 top-3 cursor-pointer hover:text-active w-[15px] h-[15px]"
+          className="hover:text-active absolute top-3 right-3 h-[15px] w-[15px] cursor-pointer"
           onClick={() => setVisible(false)}
         />
       </div>

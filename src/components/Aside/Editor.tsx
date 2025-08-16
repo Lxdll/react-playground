@@ -2,14 +2,14 @@
  * @author: lxdll
  * Code Editor
  */
-import MonacoEditor, { EditorProps, type OnMount } from "@monaco-editor/react";
-import { editor } from "monaco-editor";
-import { createATA } from "@/utils/ata";
-import { File } from "@/types";
+import MonacoEditor, { EditorProps, type OnMount } from '@monaco-editor/react';
+import { editor } from 'monaco-editor';
+import { createATA } from '@/utils/ata';
+import { File } from '@/types';
 
 interface Props {
   file: File;
-  onChange: EditorProps["onChange"];
+  onChange: EditorProps['onChange'];
   options?: editor.IStandaloneDiffEditorConstructionOptions;
 }
 
@@ -35,7 +35,7 @@ export default function Editor(props: Props) {
 
     // 快捷键 Ctrl + J 格式化代码
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyJ, () => {
-      editor.getAction("editor.action.formatDocument")?.run();
+      editor.getAction('editor.action.formatDocument')?.run();
     });
 
     // 设置编辑器的 typescript 编译选项
@@ -57,7 +57,7 @@ export default function Editor(props: Props) {
         // 字体大小
         fontSize: 14,
         // 最后一行的话就不能滚动了
-        scrollBeyondLastLine: false,
+        scrollBeyondLastLine: true,
         // 缩略图
         minimap: {
           enabled: false,

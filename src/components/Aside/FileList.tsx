@@ -3,32 +3,33 @@
  * FileList
  */
 
-import { useContext } from "react";
-import { Context } from "@/store/PlaygroundContext";
-import { makeFilename } from "@/utils";
-import FileListItem from "./FileListItem";
+import { useContext } from 'react';
+import { Context } from '@/store/PlaygroundContext';
+import { makeFilename } from '@/utils';
+import FileListItem from './FileListItem';
+import RenamingFileItem from './RenamingFileItem';
 
 export default function FileList() {
-  const { files, addFile, setSelectedFileName, setRenamingFilename } =
-    useContext(Context);
+  const { files, setRenamingFilename, renamingFilename } = useContext(Context);
 
   const filenameList = Object.keys(files);
 
   // 新增文件
   const onAddFile = () => {
     const newFilename = makeFilename(Object.keys(files));
-    addFile(newFilename);
-    setSelectedFileName(newFilename);
     setRenamingFilename(newFilename);
   };
 
   return (
-    <div className="px-1 pt-2 flex mb-1 overflow-x-scroll custom-scrollbar-x">
+    <div className="custom-scrollbar-x mb-1 flex shrink-0 overflow-x-scroll px-1 pt-2">
       {filenameList.map((filename, index) => (
         <FileListItem key={index} filename={filename} />
       ))}
+
+      {renamingFilename && <RenamingFileItem />}
+
       <div
-        className="px-2 cursor-pointer hover:text-sky-200"
+        className="cursor-pointer px-2 hover:text-sky-200"
         onClick={() => onAddFile()}
       >
         +

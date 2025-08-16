@@ -7,3 +7,8 @@ export interface File {
 export interface Files {
   [key: string]: File;
 }
+
+export enum PostMessageTypeEnum {
+  ERROR = 'error',
+  COMPILED = 'compiled_code',
+}

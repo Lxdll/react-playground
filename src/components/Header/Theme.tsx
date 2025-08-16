@@ -2,37 +2,37 @@
  * @author: lxdll
  * 切换主题
  */
-import { MoonIcon } from "@/icons";
-import { SunIcon } from "@/icons";
-import { useState } from "react";
+import { MoonIcon } from '@/icons';
+import { SunIcon } from '@/icons';
+import { useState } from 'react';
 
 enum ThemeEnum {
-  LIGHT = "light",
-  DARK = "dark",
+  LIGHT = 'light',
+  DARK = 'dark',
 }
 
 export default function Theme() {
   const [theme, setTheme] = useState(
-    document.documentElement.getAttribute("data-theme"),
+    document.documentElement.getAttribute('data-theme'),
   );
   // 获取当前主题
-  const currentTheme = document.documentElement.getAttribute("data-theme");
+  const currentTheme = document.documentElement.getAttribute('data-theme');
 
   const changeTheme = () => {
     const newTheme =
       theme === ThemeEnum.LIGHT ? ThemeEnum.DARK : ThemeEnum.LIGHT;
-    document.documentElement.setAttribute("data-theme", newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
     setTheme(newTheme);
   };
 
   return currentTheme === ThemeEnum.LIGHT ? (
     <SunIcon
-      className="cursor-pointer w-[20px] h-[20px]"
+      className="h-[20px] w-[20px] cursor-pointer"
       onClick={changeTheme}
     />
   ) : (
     <MoonIcon
-      className="cursor-pointer w-[20px] h-[20px]"
+      className="h-[20px] w-[20px] cursor-pointer"
       onClick={changeTheme}
     />
   );

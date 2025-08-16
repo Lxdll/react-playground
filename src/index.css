@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --color-active-file: skyblue;
+  --color-active-file: #61DAFB;
 }
 
 [data-theme='dark'] {
@@ -21,11 +21,9 @@ body {
   height: 100%;
 }
 
-@layer components {
-  .active-file {
-    color: var(--color-active-file);
-    border-bottom: 3px solid var(--color-active-file);
-  }
+.active-file {
+  color: var(--color-active-file);
+  border-bottom: 3px solid var(--color-active-file);
 }
 
 @layer utilities {

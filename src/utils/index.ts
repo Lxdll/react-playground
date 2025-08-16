@@ -3,7 +3,8 @@
  * 工具函数
  */
 
-import { strFromU8, strToU8, unzlibSync, zlibSync } from "fflate";
+import { strFromU8, strToU8, unzlibSync, zlibSync } from 'fflate';
+import iframeRaw from '@/iframe.html?raw';
 
 enum Language {
   JAVASCRIPT = 'javascript',
@@ -17,7 +18,7 @@ enum Language {
  * @returns @type {Language}
  */
 export const filename2language = (filename: string): Language => {
-  const suffix = filename.split(".").pop() || '';
+  const suffix = filename.split('.').pop() || '';
 
   if (['js', 'jsx'].includes(suffix)) return Language.JAVASCRIPT;
   if (['ts', 'tsx'].includes(suffix)) return Language.TYPESCRIPT;
@@ -25,7 +26,7 @@ export const filename2language = (filename: string): Language => {
   if (['json'].includes(suffix)) return Language.JSON;
 
   return Language.JAVASCRIPT;
-}
+};
 
 /**
  * make 一个新的文件名称
@@ -36,29 +37,33 @@ export const makeFilename = (existFilenameList: string[]): string => {
   const filenameBase = 'Comp';
   let index = 1;
 
-  while (existFilenameList.some(filename => filename.startsWith(`${filenameBase}${index}.`))) {
-    index++
+  while (
+    existFilenameList.some((filename) =>
+      filename.startsWith(`${filenameBase}${index}.`),
+    )
+  ) {
+    index++;
   }
 
   return `${filenameBase}${index}.tsx`;
-}
+};
 
 // 压缩
 export const compress = (data: string): string => {
-  const buffer = strToU8(data)
-  const zipped = zlibSync(buffer, { level: 9 })
-  const binary = strFromU8(zipped, true)
+  const buffer = strToU8(data);
+  const zipped = zlibSync(buffer, { level: 9 });
+  const binary = strFromU8(zipped, true);
   // 将二进制数据转为 base64 字符串
-  return btoa(binary)
-}
+  return btoa(binary);
+};
 
 // 解压缩
 export const uncompress = (base64: string): string => {
-  const binary = atob(base64)
-  const buffer = strToU8(binary, true)
-  const unzipped = unzlibSync(buffer)
-  return strFromU8(unzipped)
-}
+  const binary = atob(base64);
+  const buffer = strToU8(binary, true);
+  const unzipped = unzlibSync(buffer);
+  return strFromU8(unzipped);
+};
 
 // 将 url 中的文件初始化数据解析出来
 export const getInitFileFromUrl = () => {
@@ -72,4 +77,27 @@ export const getInitFileFromUrl = () => {
   } catch (e) {
     console.error(e);
   }
+};
+
+export function getDefaultCode(filename: string) {
+  const excludeSuffixName = filename.split('.')[0] || '';
+  return `export default function ${excludeSuffixName} () {
+  return (
+    <span>${excludeSuffixName}</span>
+  )
+}
+  `;
+}
+
+export function getIframeUrl(importMap: string, compiledCode: string) {
+  const iframeHtmlStr = iframeRaw
+    .replace(
+      '<script type="importmap"></script>',
+      `<script type="importmap">${importMap}</script>`,
+    )
+    .replace(
+      '<script type="module" id="appSrc"></script>',
+      `<script type="module" id="appSrc">${compiledCode}</script>`,
+    );
+  return URL.createObjectURL(new Blob([iframeHtmlStr], { type: 'text/html' }));
 }
