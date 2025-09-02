@@ -5,7 +5,7 @@ import { PluginObj } from '@babel/core';
 
 const beforeTransform = (filename: string, code: string) => {
   // 检查是否有 React 导入语句
-  const validateReactImportRegex = /import\s+React/g;
+  const validateReactImportRegex = /import\s+React\b/g;
   // 是否需要引入 React
   const needReactImport =
     (filename.endsWith('.jsx') || filename.endsWith('.tsx')) &&
