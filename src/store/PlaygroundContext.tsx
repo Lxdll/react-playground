@@ -46,6 +46,11 @@ export const PlaygroundProvider = (props: PropsWithChildren) => {
   const [selectedFileName, setSelectedFileName] = useState<string>('App.tsx');
   const [compiledCode, setCompiledCode] = useState<string>('');
   const [iframeError, setIframeError] = useState<string>('');
+  console.log(
+    '%c [ iframeError ]',
+    'font-size:13px; background:pink; color:#bf2c9f;',
+    iframeError,
+  );
 
   function init() {
     if (compilerWorkerRef.current) return;
@@ -68,7 +73,7 @@ export const PlaygroundProvider = (props: PropsWithChildren) => {
     function handleErrorMessage(
       msg: MessageEvent<{ type: string; message: string }>,
     ) {
-      if (msg.data.type == PostMessageTypeEnum.ERROR) {
+      if (msg.data.type == 'ERROR') {
         setIframeError(msg.data.message);
       }
     }
